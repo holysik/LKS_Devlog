@@ -13,34 +13,56 @@
 - 🧑‍💻 Role: FullStack Developer
 - 🗓 Period: 2025.12.01 – 2026.01.09
 - 👥 Team: 5 members
-- 🔗 Team Repository: [Link](https://github.com/Team-ZeroBoost/Devlog)
+- 🔗 Team Repository: [Devlog Team_Repo](https://github.com/Team-ZeroBoost/Devlog)
 
 ---
 
 ## 🧩 Tech Stack
-
-*(메인 GitHub README의 Tech Stack 그대로)*
+| 구분           | 내용                                                                                            |
+| ------------ | --------------------------------------------------------------------------------------------- |
+| **개발 환경**    | Spring Boot **3.5.7**, VS Code, Gradle, Docker, ELK Stack *(Elasticsearch, Logstash, Kibana)* |
+| **개발 언어**    | Java **17**, Python, HTML, CSS, JavaScript                                                    |
+| **서버 & DB**  | Oracle DB, JPA, MyBatis, HikariCP                                                             |
+| **협업 도구**    | GitHub, Discord                                                                               |
+| **주요 라이브러리** | STOMP *(WebSocket)*, Toast UI, Lombok, Selenium                                               |
 
 ---
 
 ## 🧑‍💻 My Role & Responsibility
 
-### 👑 Primary Contributions
+## 👑 Primary Contributions
 
-- 실시간 채팅 시스템 서버 구조 설계 및 구현
-- WebSocket / STOMP 기반 메시지 흐름 설계
-- 채팅 읽음 처리 및 동시 접속자 관리 로직 구현
-- 게시판·댓글·알림 서버 로직 구현
-- Oracle 기반 DB 구조 설계 및 JPA + MyBatis 혼합 운용
+### 💬 Real-time Chat Architecture
+- 실시간 채팅 서버 아키텍처 설계 및 구현  
+- WebSocket / STOMP 메시지 흐름 설계  
+- 채팅 읽음 처리 및 동시 접속자 동기화 로직 구현  
+- 동시성 제어 기반 채팅방 상태 실시간 갱신 구조 설계  
+- 메시지 검색 인덱싱 및 검색 결과 즉시 이동 구조 설계  
+
+### 🔔 Event-driven Notification Design
+- 팔로우·댓글·좋아요·멘션 이벤트 통합 알림 처리 구조 설계  
+- 알림 조회·정렬·유형 분리 데이터 모델링 및 API 설계  
+- 알림 클릭 시 대상 페이지 이동 라우팅 구조 설계  
+
+### 🧬 User Growth System Design
+- EXP·레벨·포인트 데이터 모델링 및 자동 레벨업 로직 설계  
+- 주간 활동 리포트 / 인기글 / IT 뉴스 배치 발송 구조 설계  
+
+### 🗄 Backend & Data Architecture
+- Oracle 기반 DB 구조 설계 및 성능 최적화  
+- JPA + MyBatis 혼합 운용 구조 설계  
+- 트랜잭션 경계 설계 및 데이터 정합성 보장 구조 구현  
 
 ---
 
 ## ⚙️ Key Features I Implemented
 
-- 💬 Real-time Chat System
-- 🔔 Notification Service
-- 📝 Board & Comment System
-- 🧬 User Level & Experience System
+- 💬 실시간 채팅, 메시지 전송·수정·삭제, 이미지 전송, 메세지 공감
+- 👥 채팅방 생성·초대·퇴장 (개인 / 단체)  
+- 🔔 알림 시스템 (팔로우, 댓글, 답글, 좋아요, 멘션)  
+- 🧬 경험치·레벨 시스템  
+- 🔎 메시지 검색 및 위치 이동  
+- ⌨️ 입력 상태 표시, 메시지 반응 기능  
 
 ---
 
