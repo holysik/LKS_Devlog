@@ -10,10 +10,10 @@
 본 저장소는 팀 프로젝트 Devlog에서 **제가 직접 설계·구현한 영역과 문제 해결 과정**을 정리한  
 개인 포트폴리오 문서 저장소입니다.
 
-- 🧑‍💻 Role: Backend Developer
-- 🗓 Period: 2025.XX – 2025.XX
-- 👥 Team: 6 members
-- 🔗 Team Repository: [Link](팀레포주소)
+- 🧑‍💻 Role: FullStack Developer
+- 🗓 Period: 2025.12.01 – 2026.01.09
+- 👥 Team: 5 members
+- 🔗 Team Repository: [Link](https://github.com/Team-ZeroBoost/Devlog)
 
 ---
 
@@ -96,5 +96,5 @@
 ## 📬 Contact
 
 - Email: holysik.dev@gmail.com
-- GitHub: https://github.com/holysik
-- Velog: https://velog.io/@holysik
+- [GitHub](https://github.com/holysik)
+
