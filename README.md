@@ -17,95 +17,86 @@
 
 ---
 
-## 🧩 Tech Stack
-| 구분           | 내용                                                                                            |
-| ------------ | --------------------------------------------------------------------------------------------- |
-| **개발 환경**    | Spring Boot **3.5.7**, VS Code, Gradle, Docker, ELK Stack *(Elasticsearch, Logstash, Kibana)* |
-| **개발 언어**    | Java **17**, Python, HTML, CSS, JavaScript                                                    |
-| **서버 & DB**  | Oracle DB, JPA, MyBatis, HikariCP                                                             |
-| **협업 도구**    | GitHub, Discord                                                                               |
-| **주요 라이브러리** | STOMP *(WebSocket)*, Toast UI, Lombok, Selenium                                               |
-
----
 
 ## 🧑‍💻 My Role & Responsibility
 
-## 👑 Primary Contributions
+## 👑 주요 기여
 
-### 💬 Real-time Chat Architecture
+### 💬 실시간 채팅 아키텍 설계
 - 실시간 채팅 서버 아키텍처 설계 및 구현  
 - WebSocket / STOMP 메시지 흐름 설계  
 - 채팅 읽음 처리 및 동시 접속자 동기화 로직 구현  
 - 동시성 제어 기반 채팅방 상태 실시간 갱신 구조 설계  
-- 메시지 검색 인덱싱 및 검색 결과 즉시 이동 구조 설계  
+- 메시지 검색 및 검색 결과 즉시 이동 구조 설계  
 
-### 🔔 Event-driven Notification Design
+### 🔔 이벤트 기반 알림 처리 구조 설계
 - 팔로우·댓글·좋아요·멘션 이벤트 통합 알림 처리 구조 설계  
 - 알림 조회·정렬·유형 분리 데이터 모델링 및 API 설계  
 - 알림 클릭 시 대상 페이지 이동 라우팅 구조 설계  
 
-### 🧬 User Growth System Design
+### 🧬 사용자 성장 로직 설계
 - EXP·레벨·포인트 데이터 모델링 및 자동 레벨업 로직 설계  
 - 주간 활동 리포트 / 인기글 / IT 뉴스 배치 발송 구조 설계  
 
-### 🗄 Backend & Data Architecture
-- Oracle 기반 DB 구조 설계 및 성능 최적화  
+### 🗄 데이터 접근 및 트랜잭션 전략
+- Oracle 기반 DB 구조 설계 
 - JPA + MyBatis 혼합 운용 구조 설계  
-- 트랜잭션 경계 설계 및 데이터 정합성 보장 구조 구현  
 
 ---
 
-## ⚙️ Key Features I Implemented
+## ⚙️ 구현한 주요 기능
 
 - 💬 실시간 채팅, 메시지 전송·수정·삭제, 이미지 전송, 메세지 공감
-- 👥 채팅방 생성·초대·퇴장 (개인 / 단체)  
+- 👥 채팅방 생성·초대·퇴장 (개인 / 단체)
+- 🔎 메시지 검색 및 위치 이동  
+- ⌨️ 입력 상태 표시, 메시지 반응 기능
 - 🔔 알림 시스템 (팔로우, 댓글, 답글, 좋아요, 멘션)  
 - 🧬 경험치·레벨 시스템  
-- 🔎 메시지 검색 및 위치 이동  
-- ⌨️ 입력 상태 표시, 메시지 반응 기능  
+- 📧 스케줄러를 활용한 자동 메일 발송
 
 ---
 
-## 🧠 Architecture & Design
+## 🧪 문제 해결
 
-> 전체 시스템 구조 요약
+### 💥 Case: 읽음 상태 정합성 및 동시성 문제
 
-(아키텍처 이미지 삽입)
+#### 🧩 Problem
+다수 사용자가 동시에 채팅방에 입장·퇴장하거나 메시지를 읽는 상황에서  
+읽음 카운트가 실제 상태와 일치하지 않는 문제가 발생했습니다.  
 
----
+#### 🔎 Cause
+- 읽음 카운트를 "현재 접속자 수"와 같은 순간 상태에 의존해 계산  
+- 입장·퇴장·읽음 이벤트가 서로 다른 흐름에서 처리되며 상태 불일치 발생  
+- 메모리 기반 접속자 정보와 DB 상태 간 정합성 유지 기준이 명확하지 않음  
 
-## 🧪 Problem Solving Highlights
+#### 🛠 Solution
+- 읽음 상태 기준을 접속자 수가 아닌,  
+  사용자별 `lastReadMessage` 기준점으로 재설계  
+- 해당 기준 이후의 메시지에 대해서만 미확인 수를 계산하도록 로직 변경  
+- 읽음 처리 흐름을 단일 기준(서버 상태)으로 통합해 정합성 확보  
 
-### 💥 Case 1: 실시간 채팅 동시성 이슈
+#### ✅ Result
+- 동시 접속 및 입·퇴장 상황에서도 읽음 카운트가 정확히 유지  
+- 접속자 수 변화와 무관하게 사용자별 읽음 상태 일관성 확보  
+- 읽음 처리 로직이 단순화되어 유지보수성과 확장성 개선   
 
-- **Problem**  
-- **Cause**  
-- **Solution**  
-- **Result**
-
-### 💥 Case 2: 읽음 처리 불일치 문제
-
-(동일 구조)
-
----
-
-## 📸 Screenshots
-
-- Main Page  
-- Chat System  
-- Profile Page  
-
-(이미지 삽입)
 
 ---
 
-## 👥 Collaboration & Process
+## 📸 주요 기능 화면
+- 채팅 
+ <img width="500" height="300" alt="{49078D6B-1A5B-4A37-A5F4-F6A343E39BD9}" src="https://github.com/user-attachments/assets/eff5ea18-bd81-4908-b079-de5420e3ef83" />
 
-- GitHub Flow 기반 협업
-- 코드 리뷰 및 이슈 관리
-- 팀 커뮤니케이션 및 역할 분담
+- 알림
+ <img width="458" height="535" alt="{9AFFE007-C31C-471D-BF35-3D587999DE7D}" src="https://github.com/user-attachments/assets/d84a7ae6-12d2-47fe-a4e6-2c921abb7f91" />
+
+- 메일 발송
+ <img width="500" height="300" alt="{5C36BD5C-4AB0-4870-9E99-7D350869A9B3}" src="https://github.com/user-attachments/assets/ffe2c348-8904-4c26-96ac-022e67b044ac" />
+
 
 ---
+
+
 
 ## 🚀 What I Learned
 
@@ -118,5 +109,4 @@
 ## 📬 Contact
 
 - Email: holysik.dev@gmail.com
-- [GitHub](https://github.com/holysik)
 
